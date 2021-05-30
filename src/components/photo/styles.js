@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
     position: "absolute",
     bottom: "0px",
     right: "40px",
-    color: "#000",
+    color: "#C0C0C0",
     [theme.breakpoints.down("sm")]: {
       bottom: "10px",
       right: "5px",
