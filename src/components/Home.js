@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import useStyles from "./styles";
-import Photo from './photo/index';
+import Photo from "./photo/index";
 
 function Home() {
   const [freeText, setFreeText] = useState("");
@@ -33,8 +33,7 @@ function Home() {
         `https://api.unsplash.com/search/photos?per_page=${photosPerSearch}&query=${freeText}${outputColor}&client_id=Hdb76tDuj5OK_dKmow8ptvHDTg_VhuCY0o0-OFnrnbY`
       )
       .then((res) => {
-        console.log(res.data.results);
-        setObjArr(res.data.results)
+        setObjArr(res.data.results);
       });
   };
 
@@ -52,7 +51,9 @@ function Home() {
 
   return (
     <Container>
-      <h1 className={classes.heading}>Search for photos by writing any topic</h1>
+      <h1 className={classes.heading}>
+        Search for photos by writing any topic
+      </h1>
       <Box className={classes.form}>
         <form autoComplete="off">
           <TextField
@@ -92,8 +93,10 @@ function Home() {
         </Button>
       </Grid>
       <Grid className={classes.photoGrid}>
-      {objArr.map((obj, i) => (
-          <Photo key={i} src={obj.urls.small} />
+        {objArr.map((obj, i) => (
+          <a key={i} href={obj.links.download} target="_blank" rel="noreferrer">
+            <Photo src={obj.urls.small} size={`${obj.width} x ${obj.height}`}/>
+          </a>
         ))}
       </Grid>
     </Container>
