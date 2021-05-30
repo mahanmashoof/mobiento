@@ -12,12 +12,14 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import useStyles from "./styles";
+import Photo from './photo/index';
 
 function Home() {
   const [freeText, setFreeText] = useState("");
   const [photoColor, setPhotoColor] = useState("original");
   const [outputColor, setOutputColor] = useState("");
   const [photosPerSearch, setPhotosPerSearch] = useState("10");
+  const [objArr, setObjArr] = useState([]);
 
   const classes = useStyles();
 
@@ -30,8 +32,9 @@ function Home() {
       .get(
         `https://api.unsplash.com/search/photos?per_page=${photosPerSearch}&query=${freeText}${outputColor}&client_id=Hdb76tDuj5OK_dKmow8ptvHDTg_VhuCY0o0-OFnrnbY`
       )
-      .then((data) => {
-        console.log(data.data);
+      .then((res) => {
+        console.log(res.data.results);
+        setObjArr(res.data.results)
       });
   };
 
@@ -51,7 +54,7 @@ function Home() {
     <Container>
       <h1 className={classes.heading}>Search for photos by writing any topic</h1>
       <Box className={classes.form}>
-        <form noValidate autoComplete="off">
+        <form autoComplete="off">
           <TextField
             id="standard-basic"
             label="What are you looking for?"
@@ -87,6 +90,11 @@ function Home() {
         <Button variant={"contained"} onClick={handleSearch}>
           Search
         </Button>
+      </Grid>
+      <Grid className={classes.photoGrid}>
+      {objArr.map((obj, i) => (
+          <Photo key={i} src={obj.urls.small} />
+        ))}
       </Grid>
     </Container>
   );

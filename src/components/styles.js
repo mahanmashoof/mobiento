@@ -5,18 +5,24 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: '5rem 0 2rem',
-    [theme.breakpoints.down('sm')]: {
-        flexDirection: "column",
+    margin: "4rem 0 2rem",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
     },
   },
   photoForm: {
     minWidth: 200,
-    [theme.breakpoints.down('sm')]: {
-        margin: '2rem 0 0'
-    }
+    [theme.breakpoints.down("sm")]: {
+      margin: "2rem 0 0",
+    },
   },
   heading: {
-      textAlign: 'center'
-  }
+    textAlign: "center",
+  },
+  photoGrid: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    margin: '3rem 0 0'
+  },
 }));
