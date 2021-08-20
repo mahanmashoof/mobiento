@@ -55,10 +55,12 @@ function Home() {
         Search for photos by writing any topic
       </h1>
       <Box className={classes.form}>
-        <form autoComplete="off">
+        <form autoComplete="off" className={classes.text}>
           <TextField
             id="standard-basic"
             label="What are you looking for?"
+            multiline
+            rows={2}
             value={freeText}
             onChange={handleFreeText}
           />

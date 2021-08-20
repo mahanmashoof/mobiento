@@ -5,10 +5,13 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: "4rem 0 2rem",
+    margin: "4rem 0 3rem",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
+  },
+  text: {
+    marginTop: "-1rem"
   },
   photoForm: {
     minWidth: 200,
